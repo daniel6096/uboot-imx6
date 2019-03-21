@@ -998,9 +998,9 @@ void setup_lvds_init(void)
 	imx_iomux_v3_setup_pad(IOMUX_LCD_BKLT_PWM); /* LCD_BKLT_PWM */
 	imx_iomux_v3_setup_pad(IOMUX_LCD_BKLT_EN); /* LCD_BKLT_EN */
 	imx_iomux_v3_setup_pad(IOMUX_LCD_VDD_EN); /* LCD_VDD_EN */
-	if (IOMUX_VDD_BKLT_EN)
-		imx_iomux_v3_setup_pad(IOMUX_VDD_BKLT_EN); /* VDD_BKLT_EN */
-
+#ifdef IOMUX_VDD_BKLT_EN
+	imx_iomux_v3_setup_pad(IOMUX_VDD_BKLT_EN); /* VDD_BKLT_EN */
+#endif
 	/* LCD_BKLT_EN - disable backlight */
 #ifdef LCD_BKLT_EN_INVERT
 	gpio_direction_output(LCD_BKLT_EN, 1);
