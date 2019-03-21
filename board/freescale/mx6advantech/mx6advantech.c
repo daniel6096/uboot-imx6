@@ -1016,12 +1016,14 @@ void setup_lvds_init(void)
 #endif
 	mdelay(10);
 	/* VDD_BKLT_EN - disable backight VDD */
+#ifdef IOMUX_VDD_BKLT_EN
 #ifdef VDD_BKLT_EN_INVERT
 	gpio_direction_output(VDD_BKLT_EN, 1);
 #else
 	gpio_direction_output(VDD_BKLT_EN, 0);
 #endif
 	mdelay(200);
+#endif
 	/* LCD_VDD_EN - disable display VDD */
 #ifdef LCD_VDD_EN_INVERT
 	gpio_direction_output(LCD_VDD_EN, 1);
